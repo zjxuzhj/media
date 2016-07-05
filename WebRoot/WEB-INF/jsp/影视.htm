@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)http://localhost:8080/mango/product/list/1.jhtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<title>影视 - Powered By Mango Team</title>
+		<meta name="author" content="Mango Team">
+		<meta name="copyright" content="Mango">
+			<meta name="keywords" content="影视">
+			<meta name="description" content="影视">
+<link href="./css/common.css" rel="stylesheet" type="text/css">
+<link href="./css/product.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $productForm = $("#productForm");
+	var $brandId = $("#brandId");
+	var $promotionId = $("#promotionId");
+	var $orderType = $("#orderType");
+	var $pageNumber = $("#pageNumber");
+	var $pageSize = $("#pageSize");
+	var $filter = $("#filter dl");
+	var $lastFilter = $("#filter dl:eq(2)");
+	var $hiddenFilter = $("#filter dl:gt(2)");
+	var $moreOption = $("#filter dd.moreOption");
+	var $moreFilter = $("#moreFilter a");
+	var $tableType = $("#tableType");
+	var $listType = $("#listType");
+	var $orderSelect = $("#orderSelect");
+	var $brand = $("#filter a.brand");
+	var $attribute = $("#filter a.attribute");
+	var $previousPage = $("#previousPage");
+	var $nextPage = $("#nextPage");
+	var $size = $("#layout a.size");
+	var $tagIds = $("input[name='tagIds']");
+	var $sort = $("#sort a");
+	var $startPrice = $("#startPrice");
+	var $endPrice = $("#endPrice");
+	var $result = $("#result");
+	var $productImage = $("#result img");
+	
+		$filter.each(function() {
+			var $this = $(this);
+			var height = $this.height();
+			if (height > 30) {
+				$this.find("dt").height(height);
+				if ($this.find("a.current").size() == 0) {
+					$this.height(30);
+					$this.find(".moreOption").show();
+				}
+			}
+		});
+		
+		$moreOption.click(function() {
+			var $this = $(this);
+			if ($this.hasClass("close")) {
+				$this.removeClass("close");
+				$this.attr("title", "更多");
+				$this.parent().height(30);
+			} else {
+				$this.addClass("close");
+				$this.attr("title", "收起");
+				$this.parent().height("auto");
+			}
+		});
+		
+		$moreFilter.click(function() {
+			var $this = $(this);
+			if ($this.hasClass("close")) {
+				$this.removeClass("close");
+				$this.text("更多选项");
+				$lastFilter.addClass("last");
+				$hiddenFilter.hide();
+			} else {
+				$this.addClass("close");
+				$this.text("收起选项");
+				$lastFilter.removeClass("last");
+				$hiddenFilter.show();
+			}
+		});
+		
+		$brand.click(function() {
+			var $this = $(this);
+			if ($this.hasClass("current")) {
+				$brandId.val("");
+			} else {
+				$brandId.val($this.attr("brandId"));
+			}
+			$pageNumber.val(1);
+			$productForm.submit();
+			return false;
+		});
+		
+		$attribute.click(function() {
+			var $this = $(this);
+			if ($this.hasClass("current")) {
+				$this.closest("dl").find("input").prop("disabled", true);
+			} else {
+				$this.closest("dl").find("input").prop("disabled", false).val($this.text());
+			}
+			$pageNumber.val(1);
+			$productForm.submit();
+			return false;
+		});
+	
+	var layoutType = getCookie("layoutType");
+	if (layoutType == "listType") {
+		$listType.addClass("currentList");
+		$result.removeClass("table").addClass("list");
+	} else {
+		$tableType.addClass("currentTable");
+		$result.removeClass("list").addClass("table");
+	}
+	
+	$tableType.click(function() {
+		var $this = $(this);
+		if (!$this.hasClass("currentTable")) {
+			$this.addClass("currentTable");
+			$listType.removeClass("currentList");
+			$result.removeClass("list").addClass("table");
+			addCookie("layoutType", "tableType", {path: "/mango/"});
+		}
+	});
+	
+	$listType.click(function() {
+		var $this = $(this);
+		if (!$this.hasClass("currentList")) {
+			$this.addClass("currentList");
+			$tableType.removeClass("currentTable");
+			$result.removeClass("table").addClass("list");
+			addCookie("layoutType", "listType", {path: "/mango/"});
+		}
+	});
+	
+	$size.click(function() {
+		var $this = $(this);
+		$pageNumber.val(1);
+		$pageSize.val($this.attr("pageSize"));
+		$productForm.submit();
+		return false;
+	});
+	
+	$previousPage.click(function() {
+		$pageNumber.val(0);
+		$productForm.submit();
+		return false;
+	});
+	
+	$nextPage.click(function() {
+		$pageNumber.val(2);
+		$productForm.submit();
+		return false;
+	});
+	
+	$orderSelect.mouseover(function() {
+		var $this = $(this);
+		var offset = $this.offset();
+		var $menuWrap = $this.closest("div.orderSelect");
+		var $popupMenu = $menuWrap.children("div.popupMenu");
+		$popupMenu.css({left: offset.left, top: offset.top + $this.height()}).show();
+		$menuWrap.mouseleave(function() {
+			$popupMenu.hide();
+		});
+	});
+	
+	$tagIds.click(function() {
+		$pageNumber.val(1);
+		$productForm.submit();
+	});
+	
+	$sort.click(function() {
+		var $this = $(this);
+		if ($this.hasClass("current")) {
+			$orderType.val("");
+		} else {
+			$orderType.val($this.attr("orderType"));
+		}
+		$pageNumber.val(1);
+		$productForm.submit();
+		return false;
+	});
+	
+	$startPrice.add($endPrice).focus(function() {
+		$(this).siblings("button").show();
+	});
+	
+	$startPrice.add($endPrice).keypress(function(event) {
+		var $this = $(this);
+		var key = event.keyCode?event.keyCode:event.which;
+		if (key == 13 || (key >= 48 && key <= 57) || (key == 46 && $this.val().indexOf(".") == -1)) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+	
+	$productForm.submit(function() {
+		if ($brandId.val() == "") {
+			$brandId.prop("disabled", true)
+		}
+		if ($promotionId.val() == "") {
+			$promotionId.prop("disabled", true)
+		}
+		if ($orderType.val() == "" || $orderType.val() == "topDesc") {
+			$orderType.prop("disabled", true)
+		}
+		if ($pageNumber.val() == "" || $pageNumber.val() == "1") {
+			$pageNumber.prop("disabled", true)
+		}
+		if ($pageSize.val() == "" || $pageSize.val() == "20") {
+			$pageSize.prop("disabled", true)
+		}
+		if ($startPrice.val() == "" || !/^\d+(\.\d+)?$/.test($startPrice.val())) {
+			$startPrice.prop("disabled", true)
+		}
+		if ($endPrice.val() == "" || !/^\d+(\.\d+)?$/.test($endPrice.val())) {
+			$endPrice.prop("disabled", true)
+		}
+	});
+	
+	$productImage.lazyload({
+		threshold: 100,
+		effect: "fadeIn"
+	});
+	
+	$.pageSkip = function(pageNumber) {
+		$pageNumber.val(pageNumber);
+		$productForm.submit();
+		return false;
+	}
+	
+});
+</script>
+</head>
+<body>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $headerLogin = $("#headerLogin");
+	var $headerRegister = $("#headerRegister");
+	var $headerUsername = $("#headerUsername");
+	var $headerLogout = $("#headerLogout");
+	var $productSearchForm = $("#productSearchForm");
+	var $keyword = $("#productSearchForm input");
+	var defaultKeyword = "商品搜索";
+	
+	var username = getCookie("username");
+	if (username != null) {
+		$headerUsername.text("您好, " + username).show();
+		$headerLogout.show();
+	} else {
+		$headerLogin.show();
+		$headerRegister.show();
+	}
+	
+	$keyword.focus(function() {
+		if ($keyword.val() == defaultKeyword) {
+			$keyword.val("");
+		}
+	});
+	
+	$keyword.blur(function() {
+		if ($keyword.val() == "") {
+			$keyword.val(defaultKeyword);
+		}
+	});
+	
+	$productSearchForm.submit(function() {
+		if ($.trim($keyword.val()) == "" || $keyword.val() == defaultKeyword) {
+			return false;
+		}
+	});
+
+});
+</script>
+<div class="container header">
+	<div class="span5">
+		<div class="logo">
+			<a href="http://localhost:8080/mango/">
+				<img src="./image/r___________renleipic_01/logo.gif" alt="xxx">
+			</a>
+		</div>
+	</div>
+	<div class="span9">
+<div class="headerAd"  width="320" height="50">
+					
+</div>	</div>
+	<div class="span10 last">
+		<div class="topNav clearfix">
+			<ul>
+				<li id="headerLogin" class="headerLogin" style="display: list-item;">
+					<a href="./会员登录.htm">登录</a>|
+				</li>
+				<li id="headerRegister" class="headerRegister" style="display: list-item;">
+					<a href="./会员注册.htm">注册</a>|
+				</li>
+				<li id="headerUsername" class="headerUsername"></li>
+				<li id="headerLogout" class="headerLogout">
+					<a href="./index.htm">[退出]</a>|
+				</li>
+						<li>
+							<a >会员中心</a>
+							|
+						</li>
+						<li>
+							<a >关于我们</a>
+							
+						</li>
+			</ul>
+		</div>
+			<div class="phone">
+				客服热线:
+				<strong>96008/53277764</strong>
+			</div>
+	</div>
+	<div class="span24">
+		<ul class="mainNav">
+					<li>
+						<a href="./index.htm">首页</a>
+						|
+					</li>
+					<li>
+						<a href="./新闻.htm">新闻</a>
+						|
+					</li>
+					<li>
+						<a href="./影视.htm">影视</a>
+						|
+					</li>
+					<li>
+						<a >音乐</a>
+						|
+					</li>
+					<li>
+						<a>软件</a>
+						|
+					</li>
+
+		</ul>
+	</div>
+	
+</div>	
+<div class="container productList">
+		<div class="span6">
+			<div class="hotProductCategory">
+						<dl>
+							<dt>
+								<a >年份</a>
+							</dt>
+									<dd>
+										<a >2016</a>
+									</dd>
+									<dd>
+										<a >2015</a>
+									</dd>
+									<dd>
+										<a >2014</a>
+									</dd>
+									<dd>
+										<a >2013</a>
+									</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a>评分</a>
+							</dt>
+									<dd>
+										<a >10分以上</a>
+									</dd>
+									<dd>
+										<a >9分以上</a>
+									</dd> 
+									<dd>
+										<a >8分以上</a>
+									</dd>
+									<dd>
+										<a >7分以上</a>
+									</dd> 
+						</dl>
+						<dl>
+							<dt>
+								<a >国家</a>
+							</dt>
+									<dd>
+										<a >中国</a>
+									</dd>
+									<dd>
+										<a >美国</a>
+									</dd>
+									<dd>
+										<a >日本</a>
+									</dd>
+									<dd>
+										<a >韩国</a>
+									</dd>
+									<dd>
+										<a >印度</a>
+									</dd>
+									<dd>
+										<a >法国</a>
+									</dd>
+									<dd>
+										<a >英国</a>
+									</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a >类型</a>
+							</dt>
+									<dd>
+										<a >传记</a>
+									</dd>
+									<dd>
+										<a >喜剧</a>
+									</dd>
+									<dd>
+										<a >剧情</a>
+									</dd>
+									<dd>
+										<a >枪战</a>
+									</dd>
+									<dd>
+										<a >恐怖</a>
+									</dd>
+									<dd>
+										<a >励志</a>
+									</dd>
+									<dd>
+										<a >动画</a>
+									</dd>
+									<dd>
+										<a >歌舞</a>
+									</dd>
+									<dd>
+										<a >罪案</a>
+									</dd>
+									<dd>
+										<a >偶像</a>
+									</dd>
+									<dd>
+										<a >悬疑</a>
+									</dd>
+									<dd>
+										<a >爱情</a>
+									</dd>
+									<dd>
+										<a >惊悚</a>
+									</dd>
+									<dd>
+										<a >综艺</a>
+									</dd>
+									<dd>
+										<a >记录</a>
+									</dd>
+									<dd>
+										<a >青春</a>
+									</dd>
+									<dd>
+										<a >科幻</a>
+									</dd>
+									<dd>
+										<a >冒险</a>
+									</dd>
+									<dd>
+										<a >魔幻</a>
+									</dd>
+									<dd>
+										<a >动作</a>
+									</dd>
+									<dd>
+										<a >幻想</a>
+									</dd>
+									<dd>
+										<a >战争</a>
+									</dd>
+									<dd>
+										<a >情色</a>
+									</dd>
+									<dd>
+										<a >血腥</a>
+									</dd>
+									<dd>
+										<a >西部</a>
+									</dd>
+									<dd>
+										<a >童话</a>
+									</dd>
+									<dd>
+										<a >古装</a>
+									</dd>
+									<dd>
+										<a >灾难</a>
+									</dd>
+									<dd>
+										<a >谍战</a>
+									</dd>
+									<dd>
+										<a >生活</a>
+									</dd>
+									<dd>
+										<a >讽刺</a>
+									</dd>
+									<dd>
+										<a >其他</a>
+									</dd>
+									<dd>
+										<a >同性</a>
+									</dd>
+
+						</dl>
+
+			</div>
+		</div>
+		<div class="span18 last">
+			
+			<form id="productForm" action="./image/蔬菜 - Powered By Mango Team.htm" method="get">
+				<input type="hidden" id="brandId" name="brandId" value="">
+				<input type="hidden" id="promotionId" name="promotionId" value="">
+				<input type="hidden" id="orderType" name="orderType" value="">
+				<input type="hidden" id="pageNumber" name="pageNumber" value="1">
+				<input type="hidden" id="pageSize" name="pageSize" value="20">
+					
+				<div id="result" class="result table clearfix">
+						<ul>
+									<li>
+										<a href="./分页面.htm">
+											<img src="./image/0a.jpg" width="170" height="170"  style="display: inline-block;">
+											   
+											<span style='color:green'>
+											 蝙蝠侠大战超人：正义黎明
+											</span>
+											 
+											<span class="price">
+											 类型：动作 科幻 奇幻
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0b.jpg" width="170" height="170" " style="display: inline-block;">
+											<span style='color:green'>
+											   刑警兄弟
+											</span>
+											<span class="price">
+												类型：喜剧 动作
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0c.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   自我救赎
+											</span>
+											<span class="price">
+												类型：剧情
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0d.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   巧克力
+											</span>
+											<span class="price">
+												类型：传记
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a href="./分页面.htm">
+											<img src="./image/0a.jpg" width="170" height="170"  style="display: inline-block;">
+											   
+											<span style='color:green'>
+											 蝙蝠侠大战超人：正义黎明
+											</span>
+											 
+											<span class="price">
+											 类型：动作 科幻 奇幻
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0b.jpg" width="170" height="170" " style="display: inline-block;">
+											<span style='color:green'>
+											   刑警兄弟
+											</span>
+											<span class="price">
+												类型：喜剧 动作
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0c.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   自我救赎
+											</span>
+											<span class="price">
+												类型：剧情
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0d.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   巧克力
+											</span>
+											<span class="price">
+												类型：传记
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a href="./分页面.htm">
+											<img src="./image/0a.jpg" width="170" height="170"  style="display: inline-block;">
+											   
+											<span style='color:green'>
+											 蝙蝠侠大战超人：正义黎明
+											</span>
+											 
+											<span class="price">
+											 类型：动作 科幻 奇幻
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0b.jpg" width="170" height="170" " style="display: inline-block;">
+											<span style='color:green'>
+											   刑警兄弟
+											</span>
+											<span class="price">
+												类型：喜剧 动作
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0c.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   自我救赎
+											</span>
+											<span class="price">
+												类型：剧情
+											</span>
+											 
+										</a>
+									</li>
+									<li>
+										<a >
+											<img src="./image/0d.jpg" width="170" height="170"   style="display: inline-block;">
+											<span style='color:green'>
+											   巧克力
+											</span>
+											<span class="price">
+												类型：传记
+											</span>
+											 
+										</a>
+									</li>
+						</ul>
+				</div>
+	<div class="pagination">
+			<span class="firstPage">&nbsp;</span>
+			<span class="previousPage">&nbsp;</span>
+				<span class="currentPage">1</span>
+				<a href="javascript: $.pageSkip(2);">2</a>
+			<a class="nextPage" href="javascript: $.pageSkip(2);">&nbsp;</a>
+			
+			<a class="lastPage" href="javascript: $.pageSkip(2);">&nbsp;</a>
+	</div>
+			</form>
+		</div>
+	</div>
+<div class="container footer">
+	<div class="span24">
+		<div class="footerAd" width="950" height="52">
+					
+</div>	</div>
+	<div class="span24">
+		<ul class="bottomNav">
+					<li>
+						<a >关于我们</a>
+						|
+					</li>
+					<li>
+						<a>联系我们</a>
+						|
+					</li>
+					<li>
+						<a >诚聘英才</a>
+						|
+					</li>
+					<li>
+						<a >法律声明</a>
+						|
+					</li>
+					<li>
+						<a>友情链接</a>
+						|
+					</li>
+
+		</ul>
+	</div>
+	<div class="span24">
+		<div class="copyright">Copyright © 2005-2013 Mango商城 版权所有</div>
+	</div>
+</div>
+</body></html>
