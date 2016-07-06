@@ -2,10 +2,12 @@ package cn.media.index;
 
 import java.util.List;
 
+import cn.media.category.Category;
 import cn.media.category.CategoryService;
 import cn.media.multmedia.MultMedia;
 import cn.media.multmedia.MultMediaService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -47,7 +49,14 @@ public class IndexAction extends ActionSupport{
 	 */
 	@Override
 	public String execute() throws Exception {
-		System.out.println("indexAction++++++");
+		//查询所有一级分类
+		List<Category> categoryList = categoryService.findAll();
+		//存入Session
+		ActionContext.getContext().getSession().put("categoryList", categoryList);
+		//查询最热
+		
+		//查询最新
+		
 		return "indexSuccess";
 	}
 }

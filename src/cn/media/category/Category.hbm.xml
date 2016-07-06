@@ -10,5 +10,12 @@
 		</id>
 		<!-- 配置普通属性 -->
 		<property name="cname" column="cname" />
+		
+		<!-- 配置关联关系 -->
+		<set name="categorySeconds" order-by="csid" lazy="false">
+			<key column="cid"/>
+			<one-to-many class="cn.media.categorysecond.CategorySecond"/>
+		</set>
+		
 	</class>
 </hibernate-mapping>
