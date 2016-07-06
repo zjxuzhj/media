@@ -1,5 +1,7 @@
 package cn.media.user;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.media.utils.MailUtils;
@@ -55,4 +57,10 @@ public class UserService {
 	public User findByUserName(String username) {
 		return userDao.findByUserName(username);
 	}
+	// 业务层查询所有的用户的方法
+	public List<User> findAll() {
+		return userDao.findAll();
+	}
+	
+		
 }

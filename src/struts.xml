@@ -23,6 +23,7 @@
 			<result name="registInput">/WEB-INF/jsp/regist.jsp</result>
 			<result name="loginInput">/WEB-INF/jsp/login.jsp</result>
 			<result name="registSuccess">/WEB-INF/jsp/msg.jsp</result>
+			<result name="adminFindAllSuccess">/admin/user/list.jsp</result>
 			<result name="activeSuccess">/WEB-INF/jsp/msg.jsp</result>
 			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>

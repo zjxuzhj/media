@@ -1,11 +1,13 @@
 package cn.media.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
@@ -110,6 +112,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		return NONE;
 	}
 	
-	
-	
+	/**
+	 * 后台查询所有用户
+	 */
+	public String adminFindAll(){
+		List<User> uList = userService.findAll();
+		// 压入值栈:
+		ActionContext.getContext().getValueStack().set("uList", uList);
+		return "adminFindAllSuccess";
+	}
 }
