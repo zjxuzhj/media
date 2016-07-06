@@ -61,6 +61,10 @@ public class UserService {
 	public List<User> findAll() {
 		return userDao.findAll();
 	}
+
+	public void delete(User user) {
+		userDao.delete(user);
+	}
 	
 		
 }

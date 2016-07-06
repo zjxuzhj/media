@@ -121,4 +121,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		ActionContext.getContext().getValueStack().set("uList", uList);
 		return "adminFindAllSuccess";
 	}
+	
+	/**
+	 * 后台:删除用户：
+	 */
+	public String delete(){
+		userService.delete(user);
+		return "deleteSuccess";
+	}
 }

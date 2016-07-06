@@ -94,7 +94,7 @@
 											
 											<td align="center" style="HEIGHT: 22px">
 												<a
-										href="${pageContext.request.contextPath}/category_delete.action?cid=<s:property value="#c.cid"/>">
+										href="${pageContext.request.contextPath}/user_delete.action?uid=<s:property value="#u.uid"/>">
 													<img
 											src="${pageContext.request.contextPath}/images/i_del.gif"
 											width="16" height="16" border="0" style="CURSOR: hand">
