@@ -1,5 +1,7 @@
 package cn.media.category;
 
-public class CategoryDao {
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+public class CategoryDao extends HibernateDaoSupport{
 
 }

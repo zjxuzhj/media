@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.shop.categorysecond.CategorySecond" table="categorysecond">
+		<!-- 配置id -->
+		<id name="ctid" column="ctid">
+			<generator class="native"/>
+		</id>
+		<!-- 配置普通属性 -->
+		<property name="ctname" column="ctname"/>
+		
+		<!-- 配置关联关系(与一级分类的关联)
+		<many-to-one name="category" class="cn.itcast.shop.category.Category" column="cid"/>
+	 -->
+		
+	</class>
+</hibernate-mapping>
