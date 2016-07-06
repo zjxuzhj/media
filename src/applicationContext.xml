@@ -71,8 +71,16 @@
 		<property name="userDao" ref="userDao"/>
 	</bean>
 	
+	<bean id="categoryService" class="cn.media.category.CategoryService">
+		<property name="categoryDao" ref="categoryDao"/>
+	</bean>
+	
 	<!-- 配置Dao================================== -->
 	<bean id="userDao" class="cn.media.user.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="categoryDao" class="cn.media.category.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
