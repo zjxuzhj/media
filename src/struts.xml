@@ -23,6 +23,15 @@
 			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
 		</action>
+		
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginSuccess" type="redirect">/admin/home.jsp</result>
+			
+			<interceptor-ref name="loginInterceptor">
+				<param name="excludeMethods">login</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
     </package>
 
 </struts>

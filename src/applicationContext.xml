@@ -64,14 +64,26 @@
 		<property name="userService" ref="userService"/>
 	</bean>
 	
+	<bean id="adminUserAction" class="cn.media.adminuser.AdminUserAction" scope="prototype">
+		<property name="adminUserService" ref="adminUserService"/>
+	</bean>
+	
 	<!-- 配置Service================================== -->
 	<bean id="userService" class="cn.media.user.UserService">
 		<property name="userDao" ref="userDao"/>
 	</bean>
 	
+	<bean id="adminUserService" class="cn.media.adminuser.AdminUserService">
+		<property name="adminUserDao" ref="adminUserDao"/>
+	</bean>
+	
 	<!-- 配置Dao================================== -->
 	<bean id="userDao" class="cn.media.user.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="adminUserDao" class="cn.media.adminuser.AdminUserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	
