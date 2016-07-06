@@ -8,6 +8,10 @@
     <constant name="struts.devMode" value="false" />
 
     <package name="default" namespace="/" extends="struts-default">
+    	<global-results>
+    		<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+    		<result name="login">/admin/index.jsp</result>
+    	</global-results>
 		<!-- 配置首页访问的Action 实体类交由spring创建-->
 		<action name="index" class="indexAction">
 			<result name="indexSuccess">/WEB-INF/jsp/index.jsp</result>
@@ -22,6 +26,11 @@
 			<result name="activeSuccess">/WEB-INF/jsp/msg.jsp</result>
 			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
+		</action>
+		
+		<!-- 管理 -->
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginSuccess" type="redirect">/admin/home.jsp</result>
 		</action>
     </package>
 

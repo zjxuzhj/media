@@ -45,6 +45,7 @@
 			<list>
 				<value>cn/media/user/User.hbm.xml</value>
 				<value>cn/media/category/Category.hbm.xml</value>
+				<value>cn/media/adminuser/AdminUser.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
