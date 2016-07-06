@@ -20,7 +20,7 @@ body {
 <form method="post" action="${pageContext.request.contextPath }/adminUser_login.action" name='theForm' onsubmit="return validate()">
   <table cellspacing="0" cellpadding="0" style="margin-top: 100px" align="center">
   <tr>
-    <td><img src="images/login.gif" width="178" height="256" border="0" alt="MEDIA" /></td>
+    <td><img src="${pageContext.request.contextPath }/images/login.gif" width="178" height="256" border="0" alt="MEDIA" /></td>
     <td style="padding-left: 50px">
       <table>
       <tr>
