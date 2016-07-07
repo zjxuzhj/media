@@ -65,6 +65,14 @@ public class UserService {
 	public void delete(User user) {
 		userDao.delete(user);
 	}
+
+	public void save(User user) {
+		userDao.save(user);
+	}
+
+	public User findByUid(Integer uid) {
+		return userDao.findByUid(uid);
+	}
 	
 		
 }

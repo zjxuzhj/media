@@ -129,4 +129,29 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		userService.delete(user);
 		return "deleteSuccess";
 	}
+	
+	/**
+	 * 后台:保存用户:
+	 */
+	public String save(){
+		userService.save(user);
+		return "saveSuccess";
+	}
+
+	
+	/**
+	 * 后台:编辑用户:(查询用户)
+	 */
+	public String edit(){
+		user = userService.findByUid(user.getUid());
+		return "editSuccess";
+	}
+	
+	/**
+	 * 后台:修改用户:
+	 */
+	public String update(){
+		userService.update(user);
+		return "updateSuccess";
+	}
 }

@@ -28,6 +28,9 @@
 			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
 			<result name="deleteSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="saveSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="updateSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="editSuccess">/admin/user/edit.jsp</result>
 		</action>
 		
 		<!-- 管理 -->

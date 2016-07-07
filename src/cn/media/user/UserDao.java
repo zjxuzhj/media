@@ -74,4 +74,8 @@ public class UserDao extends HibernateDaoSupport{
 		this.getHibernateTemplate().delete(user);
 		
 	}
+
+	public User findByUid(Integer uid) {
+		return this.getHibernateTemplate().get(User.class, uid);
+	}
 }

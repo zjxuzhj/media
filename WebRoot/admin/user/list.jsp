@@ -10,7 +10,7 @@
 	src="${pageContext.request.contextPath}/js/public.js"></script>
 <script type="text/javascript">
 	function addUser() {
-		window.location = "${pageContext.request.contextPath}/admin/category/add.jsp";
+		window.location = "${pageContext.request.contextPath}/admin/user/add.jsp";
 	}
 </script>
 </HEAD>
@@ -51,6 +51,7 @@
 								<td width="7%" align="center">手机号</td>
 								<td width="15%" align="center">地址</td>
 								<td width="7%" align="center">激活状态</td>
+								<td width="7%" align="center">激活码</td>
 
 								<td width="7%" align="center">编辑</td>
 								<td width="7%" align="center">删除</td>
@@ -81,11 +82,15 @@
 										width="7%">
 												<s:property value="#u.state" />
 											</td>
+											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="7%">
+												<s:property value="#u.code" />
+											</td>
 											
 											
 											<td align="center" style="HEIGHT: 22px">
 												<a
-										href="${pageContext.request.contextPath}/category_edit.action?cid=<s:property value="#c.cid"/>">
+										href="${pageContext.request.contextPath}/user_edit.action?uid=<s:property value="#u.uid"/>">
 													<img
 											src="${pageContext.request.contextPath}/images/i_edit.gif"
 											border="0" style="CURSOR: hand">
