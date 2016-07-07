@@ -51,6 +51,7 @@
 		<!-- 多媒体 -->
 		<action name="multmedia_*" class="multMediaAction" method="{1}">
 			<result name="findByCsidSuccess">/WEB-INF/jsp/list.jsp</result>
+			<result name="findByCsidSuccessForMusic">/WEB-INF/jsp/musiclist.jsp</result>
 		</action>
 		
     </package>

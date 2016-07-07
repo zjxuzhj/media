@@ -133,6 +133,10 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 		
 		//查询页面媒体
 		pageBean = multMediaService.findByPage(cid,page);
+		
+		if(cid == 3){
+			return "findByCsidSuccessForMusic";
+		}
 		return "findByCsidSuccess";
 	}
 	
