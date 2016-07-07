@@ -16,7 +16,7 @@
 		<property name="pageview" column="pageview"/>
 		<property name="mdate" column="mdate"/>
 		
-				<!-- 二级分类的对象 -->
+		<!-- 三级分类的对象 -->
 		<many-to-one name="categoryThird" class="cn.media.categorythird.CategoryThird" column="ctid"></many-to-one>
 	</class>
 </hibernate-mapping>    

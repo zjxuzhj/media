@@ -119,12 +119,12 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 		
 		//数据测试
 		for(CategorySecond cs : categorySecondList){
-			System.out.println("---------------");
+			System.out.println("################");
 			System.out.println(cs.getCsname());
 			for(CategoryThird ct : cs.getCategoryThirds()){
-				System.out.println(ct.getCtname());
+				System.out.println("****"+ct.getCtname());
 			}
-			System.out.println("---------------");
+			System.out.println("################");
 		}
 		
 		// 获得值栈:
@@ -132,11 +132,11 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 				.set("categorySecondList", categorySecondList);	
 		
 		//查询页面媒体
-		//pageBean = multMediaService.findByPage(csid,page);
+		pageBean = multMediaService.findByPage(cid,page);
 		return "findByCsidSuccess";
 	}
 	
-	// 查询三级分类
+	// 查询三级分类--未完成
 	public String findByCtid(){
 		// 查询二级分类
 		List<CategorySecond> categorySecondList = categorySecondService.findAll();
