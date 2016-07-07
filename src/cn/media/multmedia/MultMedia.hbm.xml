@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.media.multmedia.MultMedia" table="multmedia">
+		<!-- 配置主键 -->
+		<id name="mid" column="mid">
+			<generator class="native"/>
+		</id>
+		<!-- 配置普通属性 -->
+		<property name="mname" column="mname"/>
+		<property name="mname" column="mname"/>
+		<property name="image" column="image"/>
+		<property name="mdesc" column="mdesc"/>
+		<property name="is_hot" column="is_hot"/>
+		<property name="pageview" column="pageview"/>
+		<property name="mdate" column="mdate"/>
+		
+				<!-- 二级分类的对象 -->
+		<many-to-one name="categoryThird" class="cn.media.categorythird.CategoryThird" column="ctid"></many-to-one>
+	</class>
+</hibernate-mapping>    

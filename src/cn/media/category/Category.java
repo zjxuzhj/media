@@ -1,4 +1,10 @@
 package cn.media.category;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import cn.media.categorysecond.CategorySecond;
+
 /**
  * 一级分类的实体类
  * @author C
@@ -7,6 +13,11 @@ package cn.media.category;
 public class Category {
 	private Integer cid;
 	private String cname;
+	
+	// 有二级分类的集合
+	private Set<CategorySecond> categorySeconds = new HashSet<CategorySecond>();
+
+	
 	public Integer getCid() {
 		return cid;
 	}
