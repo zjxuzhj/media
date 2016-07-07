@@ -17,5 +17,8 @@ public class CategorySecondService {
 	public List<CategorySecond> findAll() {
 		return categorySecondDao.findAll();
 	}
-
+	// 查询某个一级分类下所有的二级分类
+	public List<CategorySecond> findByCid(Integer cid) {
+		return categorySecondDao.findByCid(cid);
+	}
 }

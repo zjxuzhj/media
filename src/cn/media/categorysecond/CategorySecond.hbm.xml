@@ -13,7 +13,7 @@
 		<!-- 配置关联关系(与一级分类的关联) -->
 		<many-to-one name="category" class="cn.media.category.Category" column="cid"/>		
 		<!-- 配置三级分类关联 -->
-		<set name="categoryThirds">
+		<set name="categoryThirds" order-by="ctid" lazy="false">
 			<key column="csid"></key>
 			<one-to-many class="cn.media.categorythird.CategoryThird"/>
 		</set>

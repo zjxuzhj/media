@@ -8,10 +8,10 @@
 					</li>
 					
 					<s:iterator var="c" value="#session.categoryList">
-						<li>
-							<a href="${ pageContext.request.contextPath }/multmedia_findByCid.action?cid=<s:property value="#c.cid"/>&page=1"><s:property value="#c.cname"/></a>
-							|
-						</li>
+							<li>
+								<a href="${ pageContext.request.contextPath }/multmedia_findByCsid.action?cid=<s:property value="#c.cid"/>&page=1"><s:property value="#c.cname"/></a>
+								|
+							</li>
 					</s:iterator>
 		</ul>
 	</div>

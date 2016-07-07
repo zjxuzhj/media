@@ -77,6 +77,10 @@
 	</bean>
 	
 	<bean id="multMediaAction" class="cn.media.multmedia.MultMediaAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="categorySecondService" ref="categorySecondService"/>
+		<property name="categoryThirdService" ref="categoryThirdService"/>
+		<property name="multMediaService" ref="multMediaService"/>
 		
 	</bean>
 	
@@ -102,10 +106,16 @@
 	<bean id="categoryService" class="cn.media.category.CategoryService">
 		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
+	<bean id="categorySecondService" class="cn.media.categorysecond.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"/>
+	</bean>
+	<bean id="categoryThirdService" class="cn.media.categorythird.CategoryThirdService">
+	</bean>
 	<bean id="adminUserService" class="cn.media.adminuser.AdminUserService">
 		<property name="adminUserDao" ref="adminUserDao"/>
 	</bean>
 	<bean id="multMediaService" class="cn.media.multmedia.MultMediaService">
+		<property name="multMediaDao" ref="multMediaDao"></property>
 	</bean>
 	
 	<!-- 配置Dao================================== -->

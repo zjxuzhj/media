@@ -3,9 +3,11 @@ package cn.media.multmedia;
 import java.io.File;
 import java.util.List;
 
+import cn.media.category.Category;
 import cn.media.category.CategoryService;
 import cn.media.categorysecond.CategorySecond;
 import cn.media.categorysecond.CategorySecondService;
+import cn.media.categorythird.CategoryThird;
 import cn.media.categorythird.CategoryThirdService;
 import cn.media.utils.PageBean;
 
@@ -104,12 +106,27 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 	public PageBean<MultMedia> getPageBean() {
 		return pageBean;
 	}
-	
+		
 	// 查询二级分类
 	public String findByCsid(){
-		// 查询分类:
-		// 查询所有二级分类:
-		List<CategorySecond> categorySecondList = categorySecondService.findAll();
+		// 查询所有一级分类:
+		List<Category> categoryList = categoryService.findAll();
+		// 获得值栈:
+		ActionContext.getContext().getValueStack()
+				.set("categoryList", categoryList);	
+		// 查询当前cid下所有二级分类:
+		List<CategorySecond> categorySecondList = categorySecondService.findByCid(cid);
+		
+		//数据测试
+		for(CategorySecond cs : categorySecondList){
+			System.out.println("---------------");
+			System.out.println(cs.getCsname());
+			for(CategoryThird ct : cs.getCategoryThirds()){
+				System.out.println(ct.getCtname());
+			}
+			System.out.println("---------------");
+		}
+		
 		// 获得值栈:
 		ActionContext.getContext().getValueStack()
 				.set("categorySecondList", categorySecondList);	
