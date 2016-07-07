@@ -28,43 +28,8 @@
 		<div class="span9">
 			<div class="headerAd" width="320" height="50"></div>
 		</div>
-		 <%@ include file="header.jsp"%>
-		<div class="span24">
-			<ul class="mainNav">
-				<li><a href="./index.htm">首页</a> |</li>
-				<li><a href="./新闻.htm">新闻</a> |</li>
-				<li><a href="./影视.htm">影视</a> |</li>
-				<li><a>音乐</a> |</li>
-				<li><a>软件</a> |</li>
-
-
-			</ul>
-		</div>
-		<div class="span24">
-			<div class="tagWrap">
-				<ul class="tag">
-					<li class="icon"
-						style="background: url(http://storage.shopxx.net/demo-image/3.0/tag/hot.gif) right no-repeat;">
-						<a>热门</a>
-					</li>
-					<li class="icon"
-						style="background: url(http://storage.shopxx.net/demo-image/3.0/tag/new.gif) right no-repeat;">
-						<a>最新</a>
-					</li>
-				</ul>
-				<div class="hotSearch">
-					热门搜索: <a>xxx</a> <a>xxx</a> <a>xxx</a> <a>xxx</a> <a>xxx</a> <a>xxx</a>
-					<a>xxx</a>
-				</div>
-				<div class="search">
-
-					<form id="productSearchForm" method="get">
-						<input name="keyword" class="keyword" value="搜索" maxlength="30">
-							<button type="submit">搜索</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		<%@ include file="header.jsp"%>
+		<%@ include file="menu.jsp" %>
 	</div>
 	<div class="container login">
 		<div class="span12">

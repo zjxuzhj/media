@@ -1,5 +1,7 @@
 package cn.media.multmedia;
 
-public class MultMediaDao {
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+public class MultMediaDao extends HibernateDaoSupport{
 
 }

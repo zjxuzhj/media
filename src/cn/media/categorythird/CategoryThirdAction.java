@@ -14,19 +14,14 @@ public class CategoryThirdAction extends ActionSupport implements ModelDriven<Ca
 	private Integer page;
 	// 模型驱动:
 	private CategoryThird categoryThird = new CategoryThird();
-//	public CategoryThird getModel() {
-//		return categorySecond;
-//	}
+
 	// 注入Service
 	private CategoryThirdService categoryThirdService;
-//	// 注入二级分类的Service
-//	private CategorySeService categoryService;
-	// 接收cid
+
 	private Integer ctid;
 	@Override
 	public CategoryThird getModel() {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryThird;
 	}
 	
 	

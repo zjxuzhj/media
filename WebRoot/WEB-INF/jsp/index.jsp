@@ -20,37 +20,11 @@
 		</div>
 	</div>
 	<div class="span9">
-<div class="headerAd" width="320" height="50">
-</div>	</div>
-	 <%@ include file="header.jsp" %>
-	<div class="span24">
-		<ul class="mainNav">
-					<li>
-						<a href="./index.htm">首页</a>
-						|
-					</li>
-					<li>
-						<a href="./新闻.htm">新闻</a>
-						|
-					</li>
-					<li>
-						<a href="./影视.htm">影视</a>
-						|
-					</li>
-					<li>
-						<a>音乐</a>
-						|
-					</li>
-					<li>
-						<a>软件</a>
-						|
-					</li>
-	
-					
-		</ul>
+		<div class="headerAd" width="320" height="50"></div>	
 	</div>
 
-
+	 <%@ include file="header.jsp" %>
+	 <%@ include file="menu.jsp" %>
 </div>	
 
 <div class="container index">

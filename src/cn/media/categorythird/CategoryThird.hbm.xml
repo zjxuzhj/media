@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="cn.itcast.shop.categorysecond.CategorySecond" table="categorysecond">
+	<class name="cn.media.categorythird.CategoryThird" table="categorythird">
 		<!-- 配置id -->
 		<id name="ctid" column="ctid">
 			<generator class="native"/>
@@ -11,9 +11,13 @@
 		<!-- 配置普通属性 -->
 		<property name="ctname" column="ctname"/>
 		
-		<!-- 配置关联关系(与一级分类的关联)
-		<many-to-one name="category" class="cn.itcast.shop.category.Category" column="cid"/>
-	 -->
-		
-	</class>
+		<!-- 配置关联关系(与二级分类的关联) -->
+		<many-to-one name="cstegorySecond" class="cn.media.categorysecond.CategorySecond" column="csid"/>
+	
+		<!-- 配置与商品关联 -->
+		<set name="multMedias">
+			<key column="ctid"></key>
+			<one-to-many class="cn.media.multmedia.MultMedia"/>
+		</set>
+	</class>	
 </hibernate-mapping>

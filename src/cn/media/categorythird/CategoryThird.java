@@ -1,5 +1,11 @@
 package cn.media.categorythird;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import cn.media.categorysecond.CategorySecond;
+import cn.media.multmedia.MultMedia;
+
 
 
 /**
@@ -20,32 +26,31 @@ public class CategoryThird {
 	private Integer ctid;
 	private String ctname;
 	// 三级分类所属的二级分类:
-//	private Cstegory cstegory;
-	// 关联的商品的集合
-	
-//	public Integer getCsid() {
-//		return csid;
-//	}
-//	public void setCsid(Integer csid) {
-//		this.csid = csid;
-//	}
-//	public String getCsname() {
-//		return csname;
-//	}
-//	public void setCsname(String csname) {
-//		this.csname = csname;
-//	}
-//	public Category getCategory() {
-//		return category;
-//	}
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}
-//	public Set<Product> getProducts() {
-//		return products;
-//	}
-//	public void setProducts(Set<Product> products) {
-//		this.products = products;
-//	}
-	
+	private CategorySecond cstegorySecond;
+	// 关联的媒体的集合
+	private Set<MultMedia> multMedias = new HashSet<MultMedia>();
+	public Integer getCtid() {
+		return ctid;
+	}
+	public void setCtid(Integer ctid) {
+		this.ctid = ctid;
+	}
+	public String getCtname() {
+		return ctname;
+	}
+	public void setCtname(String ctname) {
+		this.ctname = ctname;
+	}
+	public CategorySecond getCstegorySecond() {
+		return cstegorySecond;
+	}
+	public void setCstegorySecond(CategorySecond cstegorySecond) {
+		this.cstegorySecond = cstegorySecond;
+	}
+	public Set<MultMedia> getMultMedias() {
+		return multMedias;
+	}
+	public void setMultMedias(Set<MultMedia> multMedias) {
+		this.multMedias = multMedias;
+	}	
 }

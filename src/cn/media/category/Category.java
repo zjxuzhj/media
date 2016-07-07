@@ -18,6 +18,12 @@ public class Category {
 	private Set<CategorySecond> categorySeconds = new HashSet<CategorySecond>();
 
 	
+	public Set<CategorySecond> getCategorySeconds() {
+		return categorySeconds;
+	}
+	public void setCategorySeconds(Set<CategorySecond> categorySeconds) {
+		this.categorySeconds = categorySeconds;
+	}
 	public Integer getCid() {
 		return cid;
 	}
