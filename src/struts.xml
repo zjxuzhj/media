@@ -24,10 +24,15 @@
 			<result name="registInput">/WEB-INF/jsp/regist.jsp</result>
 			<result name="loginInput">/WEB-INF/jsp/login.jsp</result>
 			<result name="registSuccess">/WEB-INF/jsp/msg.jsp</result>
+			<result name="adminFindAllSuccess">/admin/user/list.jsp</result>
 			<result name="activeSuccess">/WEB-INF/jsp/msg.jsp</result>
 			<result name="loginPageSuccess">/WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
-			<result name="quitSuccess" type="redirectAction">index</result>
+			<result name="deleteSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="saveSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="updateSuccess" type="redirectAction">user_adminFindAll</result>
+			<result name="editSuccess">/admin/user/edit.jsp</result>
+		<result name="quitSuccess" type="redirectAction">index</result>
 		</action>
 		
 		<!-- 管理 -->

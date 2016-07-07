@@ -59,4 +59,23 @@ public class UserDao extends HibernateDaoSupport{
 		}
 		return null;
 	}
+
+	// DAO层的查询所有的用户的代码
+	public List<User> findAll() {
+		List<User> list=this.getHibernateTemplate().find("from User");
+		if(list.size()!=0){
+			return list;
+		}
+		return null;
+	}
+
+	public void delete(User user) {
+		user = this.getHibernateTemplate().get(User.class, user.getUid());
+		this.getHibernateTemplate().delete(user);
+		
+	}
+
+	public User findByUid(Integer uid) {
+		return this.getHibernateTemplate().get(User.class, uid);
+	}
 }
