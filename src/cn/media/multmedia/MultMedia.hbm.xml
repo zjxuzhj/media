@@ -10,7 +10,6 @@
 		</id>
 		<!-- 配置普通属性 -->
 		<property name="mname" column="mname"/>
-		<property name="mname" column="mname"/>
 		<property name="image" column="image"/>
 		<property name="mdesc" column="mdesc"/>
 		<property name="is_hot" column="is_hot"/>

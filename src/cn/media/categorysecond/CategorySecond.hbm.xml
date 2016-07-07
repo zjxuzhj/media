@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml-body>
-
-</xml-body>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.media.categorysecond.CategorySecond" table="categorysecond">
+		<!-- 配置id -->
+		<id name="csid" column="csid">
+			<generator class="native"/>
+		</id>
+		<!-- 配置普通属性 -->
+		<property name="csname" column="csname"/>
+		<!-- 配置关联关系(与一级分类的关联) -->
+		<many-to-one name="category" class="cn.media.category.Category" column="cid"/>		
+		<!-- 配置三级分类关联 -->
+		<set name="categoryThirds" order-by="ctid" lazy="false">
+			<key column="csid"></key>
+			<one-to-many class="cn.media.categorythird.CategoryThird"/>
+		</set>
+	</class>
+</hibernate-mapping>

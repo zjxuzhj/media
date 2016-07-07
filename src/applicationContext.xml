@@ -45,7 +45,10 @@
 			<list>
 				<value>cn/media/user/User.hbm.xml</value>
 				<value>cn/media/category/Category.hbm.xml</value>
+				<value>cn/media/categorysecond/CategorySecond.hbm.xml</value>
+				<value>cn/media/categorythird/CategoryThird.hbm.xml</value>
 				<value>cn/media/adminuser/AdminUser.hbm.xml</value>
+				<value>cn/media/multmedia/MultMedia.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -60,14 +63,40 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	<!-- 配置Action ======== prototype指定多例-->
-	<bean id="indexAction" class="cn.media.index.IndexAction" scope="prototype"></bean>
+	<bean id="indexAction" class="cn.media.index.IndexAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="multMediaService" ref="multMediaService"/>
+	</bean>
 	
 	<bean id="userAction" class="cn.media.user.UserAction" scope="prototype">
 		<property name="userService" ref="userService"/>
 	</bean>
+	
 	<bean id="adminUserAction" class="cn.media.adminuser.AdminUserAction"  scope="prototype">
 		<property name="adminUserService" ref="adminUserService"/>
 	</bean>
+	
+	<bean id="multMediaAction" class="cn.media.multmedia.MultMediaAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="categorySecondService" ref="categorySecondService"/>
+		<property name="categoryThirdService" ref="categoryThirdService"/>
+		<property name="multMediaService" ref="multMediaService"/>
+		
+	</bean>
+	
+	<bean id="categoryAction" class="cn.media.category.CategoryAction" scope="prototype">
+		
+	</bean>
+	
+	<bean id="categorySecondAction" class="cn.media.categorysecond.CategorySecondAction" scope="prototype">
+		
+	</bean>
+	
+	<bean id="categoryThirdAction" class="cn.media.categorythird.CategoryThirdAction" scope="prototype">
+		
+	</bean>
+	
+	
 	
 	<!-- 配置Service================================== -->
 	<bean id="userService" class="cn.media.user.UserService">
@@ -77,21 +106,40 @@
 	<bean id="categoryService" class="cn.media.category.CategoryService">
 		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
+	<bean id="categorySecondService" class="cn.media.categorysecond.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"/>
+	</bean>
+	<bean id="categoryThirdService" class="cn.media.categorythird.CategoryThirdService">
+	</bean>
 	<bean id="adminUserService" class="cn.media.adminuser.AdminUserService">
 		<property name="adminUserDao" ref="adminUserDao"/>
 	</bean>
+	<bean id="multMediaService" class="cn.media.multmedia.MultMediaService">
+		<property name="multMediaDao" ref="multMediaDao"></property>
+	</bean>
 	
 	<!-- 配置Dao================================== -->
-	<bean id="userDao" class="cn.media.user.UserDao">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	
-	<bean id="categoryDao" class="cn.media.category.CategoryDao">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	<bean id="adminUserDao" class="cn.media.adminuser.AdminUserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<bean id="categoryDao" class="cn.media.category.CategoryDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="categorySecondDao" class="cn.media.categorysecond.CategorySecondDao">
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean>
+	<bean id="categoryThirdDao" class="cn.media.categorythird.CategoryThirdDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="userDao" class="cn.media.user.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="multMediaDao" class="cn.media.multmedia.MultMediaDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+
+
 	
 	
 	

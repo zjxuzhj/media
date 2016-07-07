@@ -56,7 +56,7 @@ public class IndexAction extends ActionSupport{
 		//查询最热
 		
 		//查询最新
-		
+		System.out.println("###IndexAction###");
 		return "indexSuccess";
 	}
 }
