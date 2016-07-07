@@ -5,7 +5,7 @@ import java.util.Date;
 import cn.media.categorythird.CategoryThird;
 
 /**
- * 
+ * 服 多媒体 multimedia
  * @author superme
  *CREATE TABLE `multmedia` (
   `mid` int NOT NULL AUTO_INCREMENT, --主键
