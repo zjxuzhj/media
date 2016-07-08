@@ -289,8 +289,40 @@ INSERT INTO `multmedia`		VALUES ('29023211', 'Must Be Something', '', '歌手：
 INSERT INTO `multmedia`		VALUES ('32835377', 'Reality', '', '歌手：Lost Frequencies / Janieck Devy', '0', '0', now(), '39');
 
 
+/**更新电影数据
+ * 
+ */
 
-
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=2;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=3;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=4;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=5;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=6;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=7;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=9;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=10;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=11;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=12;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=14;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=15;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=16;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=17;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=18;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=20;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=21;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=22;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=23;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=25;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=26;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=27;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=28;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=30;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=31;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=32;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=34;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=35;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=36;
+UPDATE multmedia SET is_hot=0,pageview=0 WHERE MID=37;
 
 
 
