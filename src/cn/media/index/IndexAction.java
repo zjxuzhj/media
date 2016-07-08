@@ -56,7 +56,7 @@ public class IndexAction extends ActionSupport{
 		//查询最热
 		hotList = multMediaService.findHot();
 		//查询最新
-		//multMediaService.findNew();
+		newList = multMediaService.findNew();
 		return "indexSuccess";
 	}
 }
