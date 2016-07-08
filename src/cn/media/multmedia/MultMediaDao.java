@@ -1,5 +1,7 @@
 package cn.media.multmedia;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -26,7 +28,15 @@ public class MultMediaDao extends HibernateDaoSupport{
 		// String sql = "select m.* from multmedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
 		String hql = "select m from MultMedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
 		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>(hql, new Object[]{cid}, begin, limit));
-		return list;
+		List<MultMedia> newList=new ArrayList<MultMedia>();
+		Iterator<MultMedia>it =list.listIterator();
+		while (it.hasNext()){
+			MultMedia media=it.next();
+			if(!newList.contains(media)){
+			newList.add(media);
+			}
+		}
+		return newList;
 	}
 
 	//Dao层查询热门媒体只显示10个

@@ -79,7 +79,13 @@ public class MultMedia {
 		this.categoryThird = categoryThird;
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null && obj instanceof MultMedia) {   
+	        return this.getMname().equals(((MultMedia) obj).getMname());   
+	        }   
+		return false;
+	}
 	
 	
 }
