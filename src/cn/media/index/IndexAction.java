@@ -54,9 +54,9 @@ public class IndexAction extends ActionSupport{
 		//存入Session
 		ActionContext.getContext().getSession().put("categoryList", categoryList);
 		//查询最热
-		
+		hotList = multMediaService.findHot();
 		//查询最新
-		System.out.println("###IndexAction###");
+		//multMediaService.findNew();
 		return "indexSuccess";
 	}
 }

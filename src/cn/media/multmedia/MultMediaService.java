@@ -19,6 +19,10 @@ public class MultMediaService {
 	public void setMultMediaDao(MultMediaDao multMediaDao) {
 		this.multMediaDao = multMediaDao;
 	}
+	
+	public List<MultMedia> findHot(){
+		  return multMediaDao.findHot();
+	}
 
 	// 分类页面的显示商品的方法
 	public PageBean<MultMedia> findByPage(Integer cid, Integer page) {

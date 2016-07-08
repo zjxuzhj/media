@@ -2,6 +2,8 @@ package cn.media.multmedia;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import cn.media.utils.PageHibernateCallback;
@@ -24,6 +26,18 @@ public class MultMediaDao extends HibernateDaoSupport{
 		// String sql = "select m.* from multmedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
 		String hql = "select m from MultMedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
 		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>(hql, new Object[]{cid}, begin, limit));
+		return list;
+	}
+
+	//Dao层查询热门媒体只显示10个
+	public List<MultMedia> findHot() {
+		// DetachedCriteria criteria =
+		// DetachedCriteria.forClass(MultMedia.class);
+		// criteria.add(Restrictions.eq("is_hot", 1));
+		// List<MultMedia> list =
+		// this.getHibernateTemplate().findByCriteria(criteria, 0, 10);
+		
+		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>("from MultMedia where is_hot=?", new Object[]{1}, 0, 10));
 		return list;
 	}
 
