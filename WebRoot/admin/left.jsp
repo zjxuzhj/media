@@ -23,15 +23,15 @@
 		<!--
 		d = new dTree('d');
 		d.add('01',-1,'系统菜单树');
-		d.add('0101','01','用户管理','${pageContext.request.contextPath}/login/welcome.jsp','','mainFrame');
+		d.add('0101','01','用户管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
 		d.add('010101','0101','用户管理','${pageContext.request.contextPath}/user_adminFindAll.action?page=1','','mainFrame');
-		d.add('0102','01','媒体管理','${pageContext.request.contextPath}/login/welcome.jsp','','mainFrame');
-		d.add('010201','0102','媒体管理','${pageContext.request.contextPath}/product_adminFindAll.action?page=1','','mainFrame');
-		d.add('0104','01','一级分类管理','${pageContext.request.contextPath}/login/welcome.jsp','','mainFrame');
+		d.add('0102','01','媒体管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
+		d.add('010201','0102','媒体管理','${pageContext.request.contextPath}/multmedia_adminFindAll.action?page=1','','mainFrame');
+		d.add('0104','01','一级分类管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
 		d.add('010401','0104','一级分类管理','${pageContext.request.contextPath}/category_adminFindAll.action','','mainFrame');
-		d.add('0105','01','二级分类管理','${pageContext.request.contextPath}/login/welcome.jsp','','mainFrame');
+		d.add('0105','01','二级分类管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
 		d.add('010501','0105','二级分类管理','${pageContext.request.contextPath}/categorySecond_adminFindAll.action?page=1','','mainFrame');
-		d.add('0106','01','三级分类管理','${pageContext.request.contextPath}/login/welcome.jsp','','mainFrame');
+		d.add('0106','01','三级分类管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
 		d.add('010601','0106','三级分类管理','${pageContext.request.contextPath}/categorySecond_adminFindAll.action?page=1','','mainFrame');
 		document.write(d);
 		//-->
