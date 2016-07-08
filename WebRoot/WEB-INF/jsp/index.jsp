@@ -51,36 +51,11 @@
 			<img src="${pageContext.request.contextPath}/image/a.jpg" width="260" height="343" alt="热门" title="热门">
 </div> -->
 						<ul class="tabContent" style="display: block;">
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/0a.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
+							<s:iterator value="hotList">
+									<li>						
+										<a target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="image"/>" style="display: block;"></a>
 									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/0b.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/51afeef5-f6cb-4936-abea-315cfca0edc0-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/0c.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/0d.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/0a.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/0b.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/0c.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/0d.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/0a.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/0b.jpg" style="display: block;"></a>
-									</li>
+							</s:iterator>
 						</ul>
 						<ul class="tabContent" style="display: none;">
 									<li>
