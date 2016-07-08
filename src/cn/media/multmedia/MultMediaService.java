@@ -20,6 +20,7 @@ public class MultMediaService {
 		this.multMediaDao = multMediaDao;
 	}
 	
+	//业务层查询热门商品
 	public List<MultMedia> findHot(){
 		  return multMediaDao.findHot();
 	}
@@ -46,6 +47,11 @@ public class MultMediaService {
 		List<MultMedia> list = multMediaDao.findByPage(cid,begin ,limit);
 		pageBean.setList(list);
 		return pageBean;
+	}
+	
+	//业务层查询最新商品
+	public List<MultMedia> findNew() {
+		return multMediaDao.findNew();
 	}
 
 }

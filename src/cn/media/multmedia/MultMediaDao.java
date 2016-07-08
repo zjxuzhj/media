@@ -41,4 +41,10 @@ public class MultMediaDao extends HibernateDaoSupport{
 		return list;
 	}
 
+	//Dao层的查询最新媒体
+	public List<MultMedia> findNew() {
+		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>("from MultMedia order by mdate desc", null , 0, 10));
+		return list;
+	}
+
 }
