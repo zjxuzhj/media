@@ -53,7 +53,7 @@
 			<div id="result" class="result table clearfix">
 				<ul style="width:700px;">
 					<s:iterator var="m" value="pageBean.list">
-						<li style="width:600px;height:86px;float:left" list-style:none; style="line-height:5px">
+						<li style="width:700px;height:86px;float:left" list-style:none; style="line-height:5px">
 							<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=700 height=86 
 								src="http://music.163.com/outchain/player?type=2&id=<s:property value="#m.mid"/>&auto=0&height=66"></iframe>
 						</li>
