@@ -45,6 +45,10 @@
 		<!-- 一级分类 -->
 		<action name="category_*" class="categoryAction" method="{1}">
 			<result name="adminFindAllSuccess">/admin/category/list.jsp</result>
+			<result name="saveSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="deleteSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="updateSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="editSuccess">/admin/category/edit.jsp</result>
 		</action>
 		<!-- 二级分类 -->
 		<action name="categorysecond_*" class="categorySecondAction" method="{1}">
