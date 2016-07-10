@@ -87,7 +87,7 @@
 	</bean>
 	
 	<bean id="categoryAction" class="cn.media.category.CategoryAction" scope="prototype">
-		
+		<property name="categoryService" ref="categoryService"/>
 	</bean>
 	
 	<bean id="categorySecondAction" class="cn.media.categorysecond.CategorySecondAction" scope="prototype">

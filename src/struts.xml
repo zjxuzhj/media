@@ -44,6 +44,7 @@
 		</action>
 		<!-- 一级分类 -->
 		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="adminFindAllSuccess">/admin/category/list.jsp</result>
 		</action>
 		<!-- 二级分类 -->
 		<action name="categorysecond_*" class="categorySecondAction" method="{1}">
