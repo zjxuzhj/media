@@ -45,6 +45,11 @@
 					'username' : username
 				});
 	}
+	
+	function change(){
+		var img = document.getElementById("checkImg");
+		img.src="${pageContext.request.contextPath}/checkImg.action?"+new Date().getTime();
+	}
 
 	/*js实现异步校验
 	function checkUserName(){
@@ -190,12 +195,14 @@
 								</tr>
 								<tr>
 									<th><span class="requiredField">*</span>验证码:</th>
-									<td><span class="fieldSet"> <input type="text"
-											id="captcha" name="captcha" class="text captcha"
-											maxlength="4" autocomplete="off"><img
-												id="captchaImage" class="captchaImage"
-												src="${pageContext.request.contextPath}/image/captcha.jhtml"
-												title="点击更换验证码"></span></td>
+									<td><span class="fieldSet"> 
+										<input type="text"
+											id="checkcode" name="checkcode" class="text captcha"
+											maxlength="4" autocomplete="off">
+										<img
+												id="checkImg" class="captchaImage"
+												src="${ pageContext.request.contextPath }/checkImg.action"
+												title="点击更换验证码" onclick="change()"/></span></td>
 								</tr>
 								<tr>
 									<th>&nbsp;</th>

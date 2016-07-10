@@ -18,10 +18,16 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
  *
  */
 public class UserAction extends ActionSupport implements ModelDriven<User>{
-	//Struts2中模型驱动使用的类
+	// Struts2中模型驱动使用的类
 	private User user = new User();
-	//注入userService
+	// 注入userService
 	private UserService userService;
+	// 接受验证码
+	private String checkcode;
+	
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
 	
 	public User getModel(){
 		return user;
@@ -45,6 +51,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 */
 	@InputConfig(resultName="registInput")
 	public String regist(){
+		// 从Session中获得存的验证码
+		String checkcode1 = (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if(checkcode == null || !checkcode.equalsIgnoreCase(checkcode1)){
+			this.addActionError("验证码错误!");
+			return "registInput";
+		}
 		userService.regist(user);
 		this.addActionMessage("注册成功!请去邮箱激活!");
 		return "registSuccess";
@@ -82,6 +94,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 */
 	@InputConfig(resultName="loginInput")
 	public String login(){
+		// 从Session中获得存的验证码
+		String checkcode1 = (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if(checkcode == null || !checkcode.equalsIgnoreCase(checkcode1)){
+			this.addActionError("验证码错误!");
+			return "loginInput";
+		}
 		User existUser = userService.login(user);
 		if(existUser == null){
 			// 登录失败
@@ -110,6 +128,16 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			response.getWriter().print("<font color='red'>用户名已经存在</font>");
 		}
 		return NONE;
+	}
+	
+	/**
+	 * 用户退出的方法
+	 */
+	public String quit(){
+		// 获得用户的session.
+		// 销毁session
+		ServletActionContext.getRequest().getSession().invalidate();
+		return "quitSuccess";
 	}
 	
 	/**

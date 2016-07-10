@@ -68,6 +68,8 @@
 		<property name="multMediaService" ref="multMediaService"/>
 	</bean>
 	
+	<bean id="checkImg" class="cn.media.user.CheckImageAction" scope="prototype"></bean>
+	
 	<bean id="userAction" class="cn.media.user.UserAction" scope="prototype">
 		<property name="userService" ref="userService"/>
 	</bean>

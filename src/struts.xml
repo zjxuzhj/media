@@ -18,6 +18,9 @@
 			
 		</action>
 		
+		<!-- 配置验证码的Action -->
+		<action name="checkImg" class="checkImg"></action>
+		
 		<!-- 配置用户的Action -->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPageSuccess">/WEB-INF/jsp/regist.jsp</result>
