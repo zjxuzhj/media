@@ -20,7 +20,9 @@
 		</div>
 	</div>
 	<div class="span9">
-		<div class="headerAd" width="320" height="50"></div>	
+		<div class="headerAd">
+			<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障"/>
+		</div>		
 	</div>
 
 	 <%@ include file="header.jsp" %>
