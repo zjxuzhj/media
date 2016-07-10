@@ -81,13 +81,13 @@
 												</s:else>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/admin/multmedia/edit.jsp?userID=15">
+												<a href="${pageContext.request.contextPath}/multmedia_edit.action?mid=<s:property value="#p.mid"/>">
 													<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 											
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/admin/multmedia/list.jsp?userID=15">
+												<a href="${pageContext.request.contextPath}/multmedia_delete.action?mid=<s:property value="#p.mid"/>">
 													<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>

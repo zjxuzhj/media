@@ -14,7 +14,7 @@
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<strong><STRONG>添加多媒体</STRONG>
+						<strong><STRONG>编辑多媒体</STRONG>
 						</strong>
 					</td>
 				</tr>
@@ -24,7 +24,7 @@
 						媒体名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="text" name="mname" value="" id="userAction_save_do_logonName" class="bg"/>
+						<input type="text" name="mname" value="<s:property value="model.mname"/>" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 				</tr>
 				<tr>
@@ -63,7 +63,7 @@
 						描述：
 					</TD>
 					<TD class="ta_01" bgColor="#ffffff" colSpan="3">
-						<textarea name="mdesc" cols="30" rows="3" id="userAction_save_do_remark" style="WIDTH: 96%"></textarea>
+						<textarea name="mdesc" cols="30" rows="3" id="userAction_save_do_remark" style="WIDTH: 96%"><s:property value="model.mdesc"/></textarea>
 					</TD>
 				</TR>
 				<TR>

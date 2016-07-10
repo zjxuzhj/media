@@ -1,7 +1,12 @@
 package cn.media.multmedia;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 
 import cn.media.category.Category;
 import cn.media.category.CategoryService;
@@ -166,6 +171,49 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 		List<CategoryThird> ctList = categoryThirdService.findAll();
 		ActionContext.getContext().getValueStack().set("ctList", ctList);
 		return "addPageSuccess";
+	}
+	
+	public String edit(){
+		// 查询所有的三级分类 :
+		List<CategoryThird> ctList = categoryThirdService.findAll();
+		ActionContext.getContext().getValueStack().set("ctList", ctList);
+		
+		multMedia = multMediaService.findByMid(multMedia.getMid());
+		return "editSuccess";
+	}
+	
+	public String delete(){
+		multMediaService.delete(multMedia);
+		return "deleteSuccess";
+	}
+	
+	/**
+	 * 保存商品:同时上传图片
+	 * @throws IOException 
+	 */
+	public String save() throws IOException{
+		// 文件上传的操作:
+		// 获得上传的路径:
+		String path = ServletActionContext.getServletContext().getRealPath("/multmedias");
+		String realPath = path+"/"+ctid+"/"+uploadFileName;
+		File diskFile = new File(realPath);
+		// 文件上传:
+		FileUtils.copyFile(upload, diskFile);
+		// 保存到数据库:
+		// 设置三级分类
+		CategoryThird categoryThird = new CategoryThird();
+		categoryThird.setCtid(ctid);
+		multMedia.setCategoryThird(categoryThird);
+		// 设置时间:
+		multMedia.setMdate(new Date());
+		// 设置图片上传路径:
+		multMedia.setImage("multmedias/"+ctid+"/"+uploadFileName);
+		// 点击
+		multMedia.setPageview(0);
+		
+		// 调用Serviec保存商品:
+		multMediaService.save(multMedia);
+		return "saveSuccess";
 	}
 	
 }

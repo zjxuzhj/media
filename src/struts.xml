@@ -53,7 +53,10 @@
 			<result name="findByCsidSuccess">/WEB-INF/jsp/list.jsp</result>
 			<result name="findByCsidSuccessForMusic">/WEB-INF/jsp/musiclist.jsp</result>
 			<result name="adminFindAllSuccess">/admin/multmedia/list.jsp</result>
+			<result name="editSuccess">/admin/multmedia/edit.jsp</result>
 			<result name="addPageSuccess">/admin/multmedia/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">multmedia_adminFindAll.action?page=1</result>
+			<result name="deleteSuccess" type="redirectAction">multmedia_adminFindAll.action?page=1</result>
 		</action>
 		
     </package>

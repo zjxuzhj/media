@@ -78,5 +78,17 @@ public class MultMediaService {
 		pageBean.setList(list);
 		return pageBean;
 	}
+	// 业务层保存商品
+	public void save(MultMedia multMedia) {
+		multMediaDao.save(multMedia);
+	}
+
+	public MultMedia findByMid(Integer mid) {
+		return multMediaDao.findByMid(mid);
+	}
+
+	public void delete(MultMedia multMedia) {
+		multMediaDao.delete(multMedia);
+	}
 
 }

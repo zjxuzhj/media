@@ -74,4 +74,16 @@ public class MultMediaDao extends HibernateDaoSupport{
 		return null;
 	}
 
+	public void save(MultMedia multMedia) {
+		this.getHibernateTemplate().save(multMedia);
+	}
+
+	public MultMedia findByMid(Integer mid) {
+		return this.getHibernateTemplate().get(MultMedia.class, mid);
+	}
+
+	public void delete(MultMedia multMedia) {
+		this.getHibernateTemplate().delete(multMedia);
+	}
+
 }
