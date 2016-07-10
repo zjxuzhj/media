@@ -54,4 +54,29 @@ public class MultMediaService {
 		return multMediaDao.findNew();
 	}
 
+	// 业务层查询所有商品带有分页:
+	public PageBean<MultMedia> findByPage(Integer page) {
+		// 封装PageBean对象.
+		PageBean<MultMedia> pageBean = new PageBean<MultMedia>();
+		int limit = 10;//每页显示的记录数
+		pageBean.setPage(page);
+		pageBean.setLimit(limit);
+		// 总记录数
+		int totalCount = multMediaDao.findCount();
+		pageBean.setTotalCount(totalCount);
+		// 总页数:
+		int totalPage = 0;
+		if(totalCount % limit == 0){
+			totalPage = totalCount / limit;
+		}else{
+			totalPage = totalCount / limit+1;
+		}
+		pageBean.setTotalPage(totalPage);
+		// 每页显示数据的集合:
+		int begin = (page -1 )*limit;
+		List<MultMedia> list = multMediaDao.findByPage(begin, limit);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
 }

@@ -52,6 +52,8 @@
 		<action name="multmedia_*" class="multMediaAction" method="{1}">
 			<result name="findByCsidSuccess">/WEB-INF/jsp/list.jsp</result>
 			<result name="findByCsidSuccessForMusic">/WEB-INF/jsp/musiclist.jsp</result>
+			<result name="adminFindAllSuccess">/admin/multmedia/list.jsp</result>
+			<result name="addPageSuccess">/admin/multmedia/add.jsp</result>
 		</action>
 		
     </package>

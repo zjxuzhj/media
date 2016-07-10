@@ -17,7 +17,6 @@ public class MultMediaDao extends HibernateDaoSupport{
 	public Integer findCountByCid(Integer cid) {
 		//String sql = "SELECT COUNT(*) FROM multmedia m ,categorythird ct,categorysecond cs,category c WHERE m.ctid = ct.ctid AND ct.csid = cs.csid AND cs.cid = c.cid AND c.cid=?;";
 		String hql = "select count(*) from MultMedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
-		//String hql = "select count(*) from Product p join p.categorySecond cs join cs.category c where c.cid = ?";
 		
 		List<Long> list = this.getHibernateTemplate().find(hql,cid);
 		System.out.println("list:====某一级分类下所有的媒体========="+list.get(0).intValue());
@@ -55,6 +54,24 @@ public class MultMediaDao extends HibernateDaoSupport{
 	public List<MultMedia> findNew() {
 		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>("from MultMedia order by mdate desc", null , 0, 10));
 		return list;
+	}
+
+	public Integer findCount() {
+		String hql = "select count(*) from MultMedia";
+		List<Long> list = this.getHibernateTemplate().find(hql);
+		if(list.size() > 0){
+			return list.get(0).intValue();
+		}
+		return null;
+	}
+
+	public List<MultMedia> findByPage(int begin, int limit) {
+		String hql = "from MultMedia";
+		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>(hql, null, begin, limit));
+		if(list.size() > 0){
+			return list;
+		}
+		return null;
 	}
 
 }

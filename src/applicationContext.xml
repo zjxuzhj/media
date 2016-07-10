@@ -110,6 +110,7 @@
 		<property name="categorySecondDao" ref="categorySecondDao"/>
 	</bean>
 	<bean id="categoryThirdService" class="cn.media.categorythird.CategoryThirdService">
+		<property name="categoryThirdDao" ref="categoryThirdDao"/>
 	</bean>
 	<bean id="adminUserService" class="cn.media.adminuser.AdminUserService">
 		<property name="adminUserDao" ref="adminUserDao"/>

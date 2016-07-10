@@ -152,4 +152,20 @@ public class MultMediaAction extends ActionSupport implements ModelDriven<MultMe
 		return "findByCtidSuccess";
 	}
 	
+	//后台:查询所有商品的方法
+	public String adminFindAll(){
+		pageBean = multMediaService.findByPage(page);
+		return "adminFindAllSuccess";
+	}
+	
+	/**
+	 * 跳转到添加页面
+	 */
+	public String addPage(){
+		// 查询所有的三级分类 :
+		List<CategoryThird> ctList = categoryThirdService.findAll();
+		ActionContext.getContext().getValueStack().set("ctList", ctList);
+		return "addPageSuccess";
+	}
+	
 }

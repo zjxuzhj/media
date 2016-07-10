@@ -70,7 +70,7 @@
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
-												<s:property value="#p.pname"/>
+												<s:property value="#p.mname"/>
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center">
 												<s:if test="#p.is_hot == 1">
