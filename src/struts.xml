@@ -51,7 +51,12 @@
 			<result name="editSuccess">/admin/category/edit.jsp</result>
 		</action>
 		<!-- 二级分类 -->
-		<action name="categorysecond_*" class="categorySecondAction" method="{1}">
+		<action name="categorySecond_*" class="categorySecondAction" method="{1}">
+			<result name="adminFindAllSuccess">/admin/categorysecond/list.jsp</result>
+			<result name="addPageSuccess">/admin/categorysecond/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
+			<result name="deleteSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
+			<result name="updateSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
 		</action>
 		<!-- 一级分类 -->
 		<action name="categorythird_*" class="categoryThirdAction" method="{1}">

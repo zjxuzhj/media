@@ -12,7 +12,7 @@
 		<property name="cname" column="cname" />
 		
 		<!-- 配置关联关系 -->
-		<set name="categorySeconds" order-by="csid" lazy="false">
+		<set name="categorySeconds" order-by="csid" cascade="delete" lazy="false">
 			<key column="cid"/>
 			<one-to-many class="cn.media.categorysecond.CategorySecond"/>
 		</set>
