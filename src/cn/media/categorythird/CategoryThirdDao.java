@@ -1,9 +1,7 @@
 package cn.media.categorythird;
 
 import java.util.List;
-
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import cn.media.utils.PageHibernateCallback;
 
 public class CategoryThirdDao extends HibernateDaoSupport{
@@ -13,7 +11,7 @@ public class CategoryThirdDao extends HibernateDaoSupport{
 	}
 
 
-	// 查询某个一级分类下所有的二级分类
+	// 查询某个二级分类下所有的三级分类
 		public List<CategoryThird> findByCsid(Integer csid) {
 			return this.getHibernateTemplate().find(
 					"from CategoryThird where csid=?", csid);
@@ -47,9 +45,9 @@ public class CategoryThirdDao extends HibernateDaoSupport{
 		}
 
 		// DAO层的删除二级分类
-		public void delete(CategoryThird CategoryThird) {
-			CategoryThird = this.getHibernateTemplate().get(CategoryThird.class,
-					CategoryThird.getCtid());
-			this.getHibernateTemplate().delete(CategoryThird);
+		public void delete(CategoryThird categoryThird) {
+			categoryThird = this.getHibernateTemplate().get(CategoryThird.class,
+					categoryThird.getCtid());
+			this.getHibernateTemplate().delete(categoryThird);
 		}
 }

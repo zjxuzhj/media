@@ -17,12 +17,12 @@ public class CategoryThirdService {
 	public List<CategoryThird> findAll() {
 		return categoryThirdDao.findAll();
 	}
-	// 查询某个一级分类下所有的二级分类
+	// 查询某个二级分类下所有的三级分类
 		public List<CategoryThird> findByCsid(Integer csid) {
 			return categoryThirdDao.findByCsid(csid);
 		}
 
-		// 业务层保存二级分类
+		// 业务层保存三级分类
 		public void save(CategoryThird categoryThird) {
 			categoryThirdDao.save(categoryThird);
 		}

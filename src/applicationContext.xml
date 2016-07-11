@@ -96,7 +96,8 @@
 	</bean>
 	
 	<bean id="categoryThirdAction" class="cn.media.categorythird.CategoryThirdAction" scope="prototype">
-		
+		<property name="categorySecondService" ref="categorySecondService"></property>
+		<property name="categoryThirdService" ref="categoryThirdService"/>
 	</bean>
 	
 	

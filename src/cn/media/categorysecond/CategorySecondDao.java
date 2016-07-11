@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import cn.media.category.Category;
 import cn.media.utils.PageHibernateCallback;
 
 public class CategorySecondDao extends HibernateDaoSupport {

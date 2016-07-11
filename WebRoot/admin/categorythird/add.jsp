@@ -7,32 +7,32 @@
 		<LINK href="${pageContext.request.contextPath}/css/Style1.css" type="text/css" rel="stylesheet">
 	</HEAD>
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/categorySecond_save.action" method="post" enctype="multipart/form-data">
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/categoryThird_save.action" method="post" enctype="multipart/form-data">
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<STRONG>添加二级分类</STRONG>
+						<STRONG>添加三级分类</STRONG>
 					</td>
 				</tr>
 
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						二级分类名称：
+						三级分类名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="text" name="csname" value="" id="userAction_save_do_logonName" class="bg"/>
+						<input type="text" name="ctname" value="" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						所属的一级分类：
+						所属的二级分类：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<select name="cid">
-							<s:iterator var="c" value="cList">
-								<option value="<s:property value="#c.cid"/>"><s:property value="#c.cname"/></option>
+						<select name="csid">
+							<s:iterator var="cs" value="cList">
+								<option value="<s:property value="#cs.csid"/>"><s:property value="#cs.csname"/></option>
 							</s:iterator>
 						</select>
 					</td>
