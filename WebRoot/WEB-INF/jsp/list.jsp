@@ -62,7 +62,7 @@
 				<ul>
 					<s:iterator var="m" value="pageBean.list">
 						<li>
-							<a href="${pageContext.request.contextPath}/multmedia_findBymid.action?mid=<s:property value="#m.mid"/>">
+							<a href="${pageContext.request.contextPath}/multmedia_findByMid.action?mid=<s:property value="#m.mid"/>">
 								<img src="${pageContext.request.contextPath}/<s:property value="#m.image"/>" width="170" height="170"  style="display: inline-block;">
 								   
 								<span style='color:green'>
