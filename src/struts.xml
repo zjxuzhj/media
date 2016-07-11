@@ -58,8 +58,13 @@
 			<result name="deleteSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
 			<result name="updateSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
 		</action>
-		<!-- 一级分类 -->
-		<action name="categorythird_*" class="categoryThirdAction" method="{1}">
+		<!-- 三级分类 -->
+		<action name="categoryThird_*" class="categoryThirdAction" method="{1}">
+		<result name="adminFindAllSuccess">/admin/categorythird/list.jsp</result>
+			<result name="addPageSuccess">/admin/categorythird/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">categoryThird_adminFindAll?page=1</result>
+			<result name="deleteSuccess" type="redirectAction">categoryThird_adminFindAll?page=1</result>
+			<result name="updateSuccess" type="redirectAction">categoryThird_adminFindAll?page=1</result>
 		</action>
 		<!-- 多媒体 -->
 		<action name="multmedia_*" class="multMediaAction" method="{1}">

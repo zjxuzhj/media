@@ -32,7 +32,7 @@
 		d.add('0105','01','二级分类管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
 		d.add('010501','0105','二级分类管理','${pageContext.request.contextPath}/categorySecond_adminFindAll.action?page=1','','mainFrame');
 		d.add('0106','01','三级分类管理','${pageContext.request.contextPath}/admin/welcome.jsp','','mainFrame');
-		d.add('010601','0106','三级分类管理','${pageContext.request.contextPath}/categorySecond_adminFindAll.action?page=1','','mainFrame');
+		d.add('010601','0106','三级分类管理','${pageContext.request.contextPath}/categoryThird_adminFindAll.action?page=1','','mainFrame');
 		document.write(d);
 		//-->
 	</script>
