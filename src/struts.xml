@@ -71,6 +71,7 @@
 		<!-- 多媒体 -->
 		<action name="multmedia_*" class="multMediaAction" method="{1}">
 			<result name="findByCsidSuccess">/WEB-INF/jsp/list.jsp</result>
+			<result name="findByMidSuccess">/WEB-INF/jsp/desc.jsp</result>
 			<result name="findByCsidSuccessForMusic">/WEB-INF/jsp/musiclist.jsp</result>
 			<result name="adminFindAllSuccess">/admin/multmedia/list.jsp</result>
 			<result name="editSuccess">/admin/multmedia/edit.jsp</result>

@@ -82,7 +82,8 @@ public class MultMediaService {
 	public void save(MultMedia multMedia) {
 		multMediaDao.save(multMedia);
 	}
-
+	
+	//业务层查询媒体详情的方法
 	public MultMedia findByMid(Integer mid) {
 		return multMediaDao.findByMid(mid);
 	}
