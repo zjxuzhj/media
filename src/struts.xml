@@ -57,6 +57,7 @@
 			<result name="saveSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
 			<result name="deleteSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
 			<result name="updateSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
+			<result name="editSuccess">/admin/categorysecond/edit.jsp</result>
 		</action>
 		<!-- 三级分类 -->
 		<action name="categoryThird_*" class="categoryThirdAction" method="{1}">

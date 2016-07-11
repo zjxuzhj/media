@@ -88,4 +88,20 @@ public class CategorySecondAction extends ActionSupport implements
 		categorySecondService.delete(categorySecond);
 		return "deleteSuccess";
 	}
+	
+	/**
+	 * 后台:编辑二级分类:(查询二级分类)
+	 */
+	public String edit() {
+		categorySecond = categorySecondService.findByCsid(categorySecond.getCsid());
+		return "editSuccess";
+	}
+	
+	/**
+	 * 后台:修改二级分类:
+	 */
+	public String update() {
+		categorySecondService.update(categorySecond);
+		return "updateSuccess";
+	}
 }
