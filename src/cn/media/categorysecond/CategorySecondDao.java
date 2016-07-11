@@ -51,4 +51,14 @@ public class CategorySecondDao extends HibernateDaoSupport {
 				categorySecond.getCsid());
 		this.getHibernateTemplate().delete(categorySecond);
 	}
+
+	// DAO层查询二级分类
+	public CategorySecond findByCsid(Integer csid) {
+		return this.getHibernateTemplate().get(CategorySecond.class, csid);
+	}
+
+	// DAO层的修改二级分类
+	public void update(CategorySecond categorySecond) {
+		this.getHibernateTemplate().update(categorySecond);
+	}
 }

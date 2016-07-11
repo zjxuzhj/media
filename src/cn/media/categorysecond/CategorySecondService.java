@@ -30,7 +30,7 @@ public class CategorySecondService {
 	public void save(CategorySecond categorySecond) {
 		categorySecondDao.save(categorySecond);
 	}
-	
+
 	public PageBean<CategorySecond> findByPage(Integer page) {
 		// 封装PageBean
 		PageBean<CategorySecond> pageBean = new PageBean<CategorySecond>();
@@ -60,6 +60,16 @@ public class CategorySecondService {
 	// 业务层删除二级分类
 	public void delete(CategorySecond categorySecond) {
 		categorySecondDao.delete(categorySecond);
+	}
+
+	// 业务层查询二级分类
+	public CategorySecond findByCsid(Integer csid) {
+		return categorySecondDao.findByCsid(csid);
+	}
+
+	// 业务层修改二级分类
+	public void update(CategorySecond categorySecond) {
+		categorySecondDao.update(categorySecond);
 	}
 
 }
