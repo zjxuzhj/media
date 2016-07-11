@@ -86,4 +86,37 @@ public class MultMediaDao extends HibernateDaoSupport{
 		this.getHibernateTemplate().delete(multMedia);
 	}
 
+	// 统计某三级分类下所有媒体
+	public Integer findCountByCtid(Integer ctid) {
+		//String sql = "SELECT COUNT(*) FROM MultMedia m , categorythird ct WHERE m.ctid = ct.ctid AND ct.ctid = 2;";
+		String hql = "select count(*) from MultMedia m join m.categoryThird ct where ct.ctid = ?";
+		
+		List<Long> list = this.getHibernateTemplate().find(hql,ctid);
+		System.out.println("list:====某一级分类下所有的媒体========="+list.get(0).intValue());
+		return list.get(0).intValue();
+	}
+
+	public List<MultMedia> findByPage(Integer ctid, int begin, int limit,
+			String string) {
+		// String sql = "select m.* from multmedia m  where m.ctid = ?";
+		String hql = "select m from MultMedia m join m.categoryThird ct where ct.ctid = ?";
+		List<MultMedia> list = this.getHibernateTemplate().executeFind(new PageHibernateCallback<MultMedia>(hql, new Object[]{ctid}, begin, limit));
+		List<MultMedia> newList=new ArrayList<MultMedia>();
+		Iterator<MultMedia>it =list.listIterator();
+		while (it.hasNext()){
+			MultMedia media=it.next();
+			if(!newList.contains(media)){
+			newList.add(media);
+			}
+		}
+		return newList;
+	}
+
+	public Integer findCtid(Integer mid) {
+		String hql = "select ct.ctid from MultMedia m join m.categoryThird ct where m.mid = ?";
+		
+		List<Integer> list = this.getHibernateTemplate().find(hql,mid);
+		return list.get(0);
+	}
+
 }

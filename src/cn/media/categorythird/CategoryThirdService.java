@@ -68,6 +68,10 @@ public class CategoryThirdService {
 		public void update(CategoryThird categoryThird) {
 			categoryThirdDao.update(categoryThird);
 		}
+
+		public Integer findCid(Integer ctid) {
+			return categoryThirdDao.findCid(ctid);
+		}
 	
 
 }

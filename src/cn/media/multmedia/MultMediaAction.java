@@ -149,11 +149,14 @@ public class MultMediaAction extends ActionSupport implements
 		return "findByCsidSuccess";
 	}
 
-	// 查询三级分类--未完成
+	// 查询三级分类
 	public String findByCtid() {
+		// 查询ctid归属的一级分类
+		cid = categoryThirdService.findCid(ctid);
+		System.out.println("三级归属的一级：**********" + cid);
 		// 查询二级分类
 		List<CategorySecond> categorySecondList = categorySecondService
-				.findAll();
+				.findByCid(cid);
 		// 获得值栈:
 		ActionContext.getContext().getValueStack()
 				.set("categorySecondList", categorySecondList);
@@ -161,7 +164,11 @@ public class MultMediaAction extends ActionSupport implements
 		List<CategoryThird> categoryThirdList = categoryThirdService
 				.findByCsid(csid);
 
-		// pageBean = multMediaService.findByPage(ctid, page);
+		pageBean = multMediaService.findByPage(ctid, page, "无用参数");
+		
+		if (cid == 3) {
+			return "findByCtidSuccessForMusic";
+		}
 		return "findByCtidSuccess";
 	}
 
@@ -228,6 +235,23 @@ public class MultMediaAction extends ActionSupport implements
 
 	// 查询媒体详情：
 	public String findByMid() {
+		/**
+		 * 详细页面侧栏无法显示原因推测：
+		 * 	1.没有查询二级分类或者查询参数为空导致查询的二级分类为空--保存在session的categorySecondList为空
+		 * 	2.没有保存到session
+		 * 	3.页面上没有遍历显示categorySecondList
+		 * 验证：
+		 * 	1.查看页面进入详细action
+		 * 		"${pageContext.request.contextPath}/multmedia_findByMid.action?mid=<s:property value="#m.mid"/>"
+		 * 	因此错误原因找到链接中没有携带cid参数导致根据cid查询二级分类时为空
+		 * 	解决办法:
+		 * 		1.链接添加cid参数
+		 * 		2.根据mid-->ctid-->csid-->cid
+		 */
+		// 解决办法根据mid获取cid
+		ctid = multMediaService.findCtid(multMedia.getMid());
+		cid = categoryThirdService.findCid(ctid);
+		
 		// 查询所有一级分类:
 		List<Category> categoryList = categoryService.findAll();
 		// 获得值栈:
@@ -236,6 +260,16 @@ public class MultMediaAction extends ActionSupport implements
 		// 查询当前cid下所有二级分类:
 		List<CategorySecond> categorySecondList = categorySecondService
 				.findByCid(cid);
+		
+		// 数据测试
+		for (CategorySecond cs : categorySecondList) {
+			System.out.println("################");
+			System.out.println(cs.getCsname());
+			for (CategoryThird ct : cs.getCategoryThirds()) {
+				System.out.println("****" + ct.getCtname());
+			}
+			System.out.println("################");
+		}
 
 		// 获得值栈:
 		ActionContext.getContext().getValueStack()

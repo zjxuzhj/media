@@ -20,12 +20,12 @@ public class MultMediaService {
 		this.multMediaDao = multMediaDao;
 	}
 	
-	//业务层查询热门商品
+	//业务层查询热门
 	public List<MultMedia> findHot(){
 		  return multMediaDao.findHot();
 	}
 
-	// 分类页面的显示商品的方法
+	// 分类页面的显示的方法
 	public PageBean<MultMedia> findByPage(Integer cid, Integer page) {
 		int limit = 12; // 每页显示记录数.
 		int totalPage = 0; // 总页数
@@ -42,19 +42,19 @@ public class MultMediaService {
 			totalPage = totalCount / limit + 1;
 		}
 		pageBean.setTotalPage(totalPage);
-		// 商品数据集合:
+		// 数据集合:
 		int begin = (page - 1) * limit;
 		List<MultMedia> list = multMediaDao.findByPage(cid,begin ,limit);
 		pageBean.setList(list);
 		return pageBean;
 	}
 	
-	//业务层查询最新商品
+	//业务层查询最新
 	public List<MultMedia> findNew() {
 		return multMediaDao.findNew();
 	}
 
-	// 业务层查询所有商品带有分页:
+	// 业务层查询所有带有分页:
 	public PageBean<MultMedia> findByPage(Integer page) {
 		// 封装PageBean对象.
 		PageBean<MultMedia> pageBean = new PageBean<MultMedia>();
@@ -78,7 +78,7 @@ public class MultMediaService {
 		pageBean.setList(list);
 		return pageBean;
 	}
-	// 业务层保存商品
+	// 业务层保存
 	public void save(MultMedia multMedia) {
 		multMediaDao.save(multMedia);
 	}
@@ -92,4 +92,31 @@ public class MultMediaService {
 		multMediaDao.delete(multMedia);
 	}
 
+	public PageBean<MultMedia> findByPage(Integer ctid, Integer page,
+			String string) {
+		int limit = 12; // 每页显示记录数.
+		int totalPage = 0; // 总页数
+		PageBean<MultMedia> pageBean = new PageBean<MultMedia>();
+		pageBean.setPage(page);
+		pageBean.setLimit(limit);		
+		// 查询总记录数:
+		Integer totalCount = multMediaDao.findCountByCtid(ctid);
+		pageBean.setTotalCount(totalCount);
+		// 总页数的封装
+		if(totalCount % limit == 0){
+			totalPage = totalCount / limit;
+		}else{
+			totalPage = totalCount / limit + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		// 数据集合:
+		int begin = (page - 1) * limit;
+		List<MultMedia> list = multMediaDao.findByPage(ctid,begin ,limit, "无用参数");
+		pageBean.setList(list);
+		return pageBean;
+	}
+
+	public Integer findCtid(Integer mid) {
+		return multMediaDao.findCtid(mid);
+	}
 }

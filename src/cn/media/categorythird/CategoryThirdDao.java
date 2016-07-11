@@ -62,4 +62,15 @@ public class CategoryThirdDao extends HibernateDaoSupport{
 		public void update(CategoryThird categoryThird) {
 			this.getHibernateTemplate().update(categoryThird);
 		}
+
+
+		public Integer findCid(Integer ctid) {
+			//String sql = " SELECT c.cid FROM categorythird ct, categorysecond cs, category c WHERE m.ctid = ct.ctid AND ct.csid = cs.csid AND cs.cid = c.cid AND ct.ctid = 12;";
+			           //"select m from MultMedia m join m.categoryThird ct join ct.cstegorySecond cs join cs.category c where c.cid = ?";
+			String hql = "select c.cid from CategoryThird ct join ct.cstegorySecond cs join cs.category c where ct.ctid = ?";
+			
+			List<Integer> list = this.getHibernateTemplate().find(hql,ctid);
+			System.out.println("list:====某三级分类下归属的一级分类========="+ list.get(0));
+			return list.get(0);
+		}
 }
