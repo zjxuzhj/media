@@ -1,7 +1,10 @@
 package cn.media.categorythird;
 
 import java.util.List;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import cn.media.categorysecond.CategorySecond;
 import cn.media.utils.PageHibernateCallback;
 
 public class CategoryThirdDao extends HibernateDaoSupport{
@@ -49,5 +52,14 @@ public class CategoryThirdDao extends HibernateDaoSupport{
 			categoryThird = this.getHibernateTemplate().get(CategoryThird.class,
 					categoryThird.getCtid());
 			this.getHibernateTemplate().delete(categoryThird);
+		}
+		// DAO层查询二级分类
+		public CategoryThird findByCtid(Integer ctid) {
+			return this.getHibernateTemplate().get(CategoryThird.class, ctid);
+		}
+
+		// DAO层的修改二级分类
+		public void update(CategoryThird categoryThird) {
+			this.getHibernateTemplate().update(categoryThird);
 		}
 }

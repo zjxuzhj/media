@@ -92,5 +92,19 @@ public class CategoryThirdAction extends ActionSupport implements
 		categoryThirdService.delete(categoryThird);
 		return "deleteSuccess";
 	}
-
+	/**
+	 * 后台:编辑二级分类:(查询二级分类)
+	 */
+	public String edit() {
+		categoryThird = categoryThirdService.findByCtid(categoryThird.getCtid());
+		return "editSuccess";
+	}
+	
+	/**
+	 * 后台:修改二级分类:
+	 */
+	public String update() {
+		categoryThirdService.update(categoryThird);
+		return "updateSuccess";
+	}
 }

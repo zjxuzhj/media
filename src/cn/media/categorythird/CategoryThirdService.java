@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.media.categorysecond.CategorySecond;
 import cn.media.utils.PageBean;
 @Transactional
 public class CategoryThirdService {
@@ -58,7 +59,15 @@ public class CategoryThirdService {
 			categoryThirdDao.delete(categoryThird);
 		}
 
-	
+		// 业务层查询二级分类
+		public CategoryThird findByCtid(Integer ctid) {
+			return categoryThirdDao.findByCtid(ctid);
+		}
+
+		// 业务层修改二级分类
+		public void update(CategoryThird categoryThird) {
+			categoryThirdDao.update(categoryThird);
+		}
 	
 
 }
