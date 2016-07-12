@@ -236,6 +236,7 @@ public class MultMediaAction extends ActionSupport implements
 	// 查询媒体详情：
 	public String findByMid() {
 		/**
+		 * Message To:胡凯俊
 		 * 详细页面侧栏无法显示原因推测：
 		 * 	1.没有查询二级分类或者查询参数为空导致查询的二级分类为空--保存在session的categorySecondList为空
 		 * 	2.没有保存到session
